@@ -39,6 +39,18 @@ START_TEST(int_matrix_destroy_guards_against_null_matrix_pointer)
 }
 END_TEST
 
+START_TEST(int_matrix_destroy_sets_nulls_and_zeros)
+{
+    int_matrix_t *matrix = int_matrix_create(2, 2);
+
+    int_matrix_destroy(matrix);
+
+    ck_assert_ptr_eq(NULL, matrix->data);
+    ck_assert_int_eq(0, matrix->rows);
+    ck_assert_int_eq(0, matrix->columns);
+}
+END_TEST
+
 Suite * create_suite_matrix_operations(void)
 {
     Suite *suite;
@@ -54,6 +66,7 @@ Suite * create_suite_matrix_operations(void)
 
     tcase = tcase_create("Destroy Int Matrix");
     tcase_add_test(tcase, int_matrix_destroy_guards_against_null_matrix_pointer);
+    tcase_add_test(tcase, int_matrix_destroy_sets_nulls_and_zeros);
     suite_add_tcase(suite, tcase);
 
     return suite;
