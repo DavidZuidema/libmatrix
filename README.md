@@ -8,15 +8,20 @@ The library uses GNU Make as a build system and libcheck as the unit testing fra
 
 ## Make Targets
 
-```
+```sh
 $ make all          # compile all object files
 $ make test-build   # compile all test files
 $ make test         # compile and run test suite
+$ make clean        # delete build files and binaries
 ```
 
 ## Interface
 
 ```c
+/**
+ * Initializes all elements to 0
+ * Uses HEAP, remember to free
+ */
 int_matrix_t int_matrix_create(const int rows, const int columns);
 ```
 
