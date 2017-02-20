@@ -15,5 +15,8 @@ void int_matrix_destroy(int_matrix_t *matrix)
 {
     if (matrix != NULL) {
         free(matrix->data);
+        matrix->data = NULL;
+        matrix->rows = 0;
+        matrix->columns = 0;
     }
 }
