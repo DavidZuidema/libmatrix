@@ -21,6 +21,18 @@ START_TEST(int_matrix_create_sets_column_count_correctly)
 }
 END_TEST
 
+START_TEST(int_matrix_create_initializes_entries_to_zero)
+{
+    int_matrix_t *matrix = int_matrix_create(2, 3);
+
+    ck_assert_ptr_ne(NULL, matrix);
+    ck_assert_int_eq(0, matrix->data[0]);
+    ck_assert_int_eq(0, matrix->data[1]);
+    ck_assert_int_eq(0, matrix->data[2]);
+    ck_assert_int_eq(0, matrix->data[3]);
+}
+END_TEST
+
 Suite * create_suite_matrix_operations(void)
 {
     Suite *suite;
@@ -31,6 +43,7 @@ Suite * create_suite_matrix_operations(void)
     tcase = tcase_create("Create Int Matrix");
     tcase_add_test(tcase, int_matrix_create_sets_row_count_correctly);
     tcase_add_test(tcase, int_matrix_create_sets_column_count_correctly);
+    tcase_add_test(tcase, int_matrix_create_initializes_entries_to_zero);
     suite_add_tcase(suite, tcase);
 
     return suite;
