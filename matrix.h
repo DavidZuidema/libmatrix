@@ -10,7 +10,7 @@ typedef struct int_matrix_s {
 /**
  * Initializes all elements to 0
  * Uses HEAP
- * Remember to call int_matrix_destroy
+ * Call int_matrix_destroy when finished
  */
 int_matrix_t *int_matrix_create(const int rows, const int columns);
 void int_matrix_destroy(int_matrix_t *matrix);

@@ -20,8 +20,10 @@ $ make clean        # delete build files and binaries
 ```c
 /**
  * Initializes all elements to 0
- * Uses HEAP, remember to free
+ * Uses HEAP
+ * Call int_matrix_destroy when finished
  */
 int_matrix_t int_matrix_create(const int rows, const int columns);
+void int_matrix_destroy(int_matrix_t *matrix);
 ```
 
