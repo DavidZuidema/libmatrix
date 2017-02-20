@@ -10,3 +10,8 @@ int_matrix_t *int_matrix_create(const int rows, const int columns)
     matrix->data = calloc(rows * columns, sizeof(int));
     return matrix;
 }
+
+void int_matrix_destroy(int_matrix_t *matrix)
+{
+    free(matrix->data);
+}

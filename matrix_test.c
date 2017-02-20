@@ -33,6 +33,12 @@ START_TEST(int_matrix_create_initializes_entries_to_zero)
 }
 END_TEST
 
+START_TEST(int_matrix_destroy_guards_against_null_matrix_pointer)
+{
+    int_matrix_destroy(NULL);
+}
+END_TEST
+
 Suite * create_suite_matrix_operations(void)
 {
     Suite *suite;
@@ -44,6 +50,10 @@ Suite * create_suite_matrix_operations(void)
     tcase_add_test(tcase, int_matrix_create_sets_row_count_correctly);
     tcase_add_test(tcase, int_matrix_create_sets_column_count_correctly);
     tcase_add_test(tcase, int_matrix_create_initializes_entries_to_zero);
+    suite_add_tcase(suite, tcase);
+
+    tcase = tcase_create("Destroy Int Matrix");
+    tcase_add_test(tcase, int_matrix_destroy_guards_against_null_matrix_pointer);
     suite_add_tcase(suite, tcase);
 
     return suite;
